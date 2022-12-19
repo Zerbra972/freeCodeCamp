@@ -1,12 +1,14 @@
 //Return true if the given string is a palindrome. Otherwise, return false.
 function palindrome(str) {
-    let onlyLetters = str.replace(/[`~ !@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-    onlyLetters = onlyLetters.toLowerCase().split("");
-    for (let i = 0; i < onlyLetters.length - 1 / 2; i++) {
-      if (onlyLetters[i] !== onlyLetters[onlyLetters.length - i - 1]) {
-      return false;
-      break;
-    }
-  }
-  return true;
+    const alphanumericOnly = str
+        // 1) Lowercase the input
+        .toLowerCase()
+        // 2) Strip out non-alphanumeric characters
+        .match(/[a-z0-9]/g);
+        
+    // 3) return string === reversedString
+    return alphanumericOnly.join('') ===
+        alphanumericOnly.reverse().join('');
 }
+
+palindrome("kayak");
